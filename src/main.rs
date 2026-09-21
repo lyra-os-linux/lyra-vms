@@ -96,12 +96,15 @@ fn main() -> gtk::glib::ExitCode {
             .icon_name("computer-symbolic")
             .description(&message)
             .build();
+        let content = adw::ToolbarView::new();
+        content.add_top_bar(&adw::HeaderBar::new());
+        content.set_content(Some(&page));
         let window = adw::ApplicationWindow::builder()
             .application(app)
             .title("Lyra VMs")
             .default_width(480)
             .default_height(320)
-            .content(&page)
+            .content(&content)
             .build();
         window.present();
     });
