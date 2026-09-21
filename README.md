@@ -29,3 +29,12 @@ disposable VM or libvirt test driver, never the developer workstation's domains.
 
 Keep virt-manager available until this application's package and exact candidate
 ISO pass qualification. Offline SDK work remains outside this task.
+
+## OBS source preparation
+
+After committing changes, run `packaging/obs/make-sources.sh HEAD`.
+The script archives that exact revision, embeds `.source-revision`, and bundles
+locked Cargo dependencies from the local cache. Populate the cache with
+`cargo fetch --locked` first if needed. The RPM build uses `--frozen` and needs
+no network. Artifacts and hashes are in `packaging/obs/out/<revision>/`.
+The Vega dependency requires the release containing the VM management page.
