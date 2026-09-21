@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Lyra VMs
+Comment=Open virtual machine displays from Vega
+Comment[pt_BR]=Abra a tela das máquinas virtuais pelo Vega
+Comment[es_ES]=Abra las pantallas de máquinas virtuales desde Vega
+Exec=lyra-vms
+Icon=computer-symbolic
+Terminal=false
+Categories=System;Emulator;
+Keywords=VM;QEMU;KVM;Virtual;
