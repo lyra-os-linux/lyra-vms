@@ -14,14 +14,14 @@ export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct "$rev")"
 printf '%s\n' "$rev" > "$work/.source-revision"
 mkdir -p "$out_dir"
 # Prefix the source archive without depending on the temporary directory name.
-tar --sort=name --mtime="@$SOURCE_DATE_EPOCH" --owner=0 --group=0 --numeric-owner \
+tar --format=posix --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime --sort=name --mtime="@$SOURCE_DATE_EPOCH" --owner=0 --group=0 --numeric-owner \
     --transform="s,^\.,$name," -C "$work" -cJf "$out_dir/$name.tar.xz" .
 (
     cd "$work"
     mkdir -p .cargo
     cargo vendor --offline --locked --versioned-dirs vendor > .cargo/config.toml
 )
-tar --sort=name --mtime="@$SOURCE_DATE_EPOCH" --owner=0 --group=0 --numeric-owner \
+tar --format=posix --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime --sort=name --mtime="@$SOURCE_DATE_EPOCH" --owner=0 --group=0 --numeric-owner \
     -C "$work" -cJf "$out_dir/vendor.tar.xz" vendor .cargo/config.toml
 cp "$work/packaging/obs/lyra-vms.spec" "$work/packaging/obs/lyra-vms.changes" "$out_dir/"
 (cd "$out_dir" && sha256sum "$name.tar.xz" vendor.tar.xz > SHA256SUMS)
