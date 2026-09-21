@@ -27,6 +27,5 @@ Storage follows XDG: ${XDG_DATA_HOME:-$HOME/.local/share}/lyra-vms for
 personal machines using qemu:///session. The maintainer proposed a hidden home
 folder and then .local/shared/vms; corrected/recommended share/lyra-vms.
 Default to personal VMs. Offer the system connection separately, preserving
-existing system domain paths; newly created system disks use a libvirt-managed
-/var/lib/libvirt/images/lyra-vms pool. Never chmod the user's home or move
+existing system domain paths; creation/import is currently personal-only. Never chmod the user's home or move
 existing storage automatically.

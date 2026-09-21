@@ -5,12 +5,14 @@ Summary:        Graphical console launcher for Lyra OS virtual machines
 License:        GPL-3.0-or-later
 URL:            https://github.com/lyra-os-linux/lyra-vms
 Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.92
 BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 BuildRequires:  desktop-file-utils
 Requires:       virt-viewer
+Requires:       vega-gtk >= 5.1.41
 
 %description
 Open a local virtual machine graphical console using virt-viewer.
@@ -19,6 +21,7 @@ Closing the console does not shut down the guest.
 
 %prep
 %autosetup
+tar -xJf %{SOURCE1}
 
 %build
 cargo build --release --frozen

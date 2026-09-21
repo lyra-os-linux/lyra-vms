@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Mon Sep 21 2026 - Rodrigo Brito
+
+- Initial 0.1.0 console launcher for local libvirt virtual machines.
+- Delegate display to virt-viewer; opening without a UUID opens Vega.
+- Bundle locked Cargo dependencies for builds without network access.
