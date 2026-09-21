@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Mon Sep 21 2026 - Rodrigo Brito
+Mon Sep 21 14:15:00 UTC 2026 - Rodrigo Brito <183213+britors@users.noreply.github.com>
 
 - Initial 0.1.0 console launcher for local libvirt virtual machines.
 - Delegate display to virt-viewer; opening without a UUID opens Vega.

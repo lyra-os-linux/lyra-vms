@@ -6,6 +6,7 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/lyra-os-linux/lyra-vms
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+BuildRequires:  binutils
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.92
 BuildRequires:  pkgconfig(gtk4) >= 4.10
@@ -25,6 +26,7 @@ tar -xJf %{SOURCE1}
 
 %build
 cargo build --release --frozen
+strip --strip-unneeded target/release/lyra-vms
 
 %install
 install -Dm755 target/release/lyra-vms %{buildroot}%{_bindir}/lyra-vms
